@@ -1,19 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JASPERS CBT - Login</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="container">
-        <h1>JASPERS CBT</h1>
-        <h2>Login</h2>
-        <input type="text" id="studentName" placeholder="Enter your name">
-        <br><br>
-        <button onclick="startExam()">Start Exam</button>
-    </div>
-    <script src="script.js"></script>
-</body>
-</html>
+function startExam() {
+    let name = document.getElementById("studentName").value.trim();
+
+    if (name === "") {
+        alert("Please enter your full name.");
+        return;
+    }
+
+    // Save candidate name
+    localStorage.setItem("candidateName", name);
+
+    // Go to the instructions page
+    window.location.href = "instructions.html";
+}
