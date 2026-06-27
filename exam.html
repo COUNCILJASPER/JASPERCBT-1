@@ -1,44 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JASPERS CBT - Exam</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JASPERS CBT - Exam</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
-<div class="login-box" style="width:700px;">
-
-<h2>JASPERS CBT Examination</h2>
-
-<p><strong>Candidate:</strong> <span id="candidate"></span></p>
-
-<p><strong>Time Left:</strong> <span id="timer">50:00</span></p>
-
-<hr><br>
-
-<h3 id="question">
-Question will appear here
-</h3>
-
-<br>
-
-<div id="options"></div>
-
-<br>
-
-<button onclick="previousQuestion()">Previous</button>
-
-<br><br>
-
-<button onclick="nextQuestion()">Next</button>
-
-</div>
-
-<script src="questions.js"></script>
-<script src="exam.js"></script>
-
+    <div class="container">
+        <h1>JASPERS CBT</h1>
+        <div id="examInfo">
+            <p><strong>Student:</strong> <span id="displayName"></span></p>
+            <p><strong>Question <span id="currentQ"></span> of <span id="totalQ"></span></strong></p>
+        </div>
+        <hr>
+        <div id="questionContainer">
+            <h3 id="questionText">Loading question...</h3>
+            <div id="optionsContainer"></div>
+        </div>
+        <br>
+        <button id="nextBtn" onclick="nextQuestion()">Next →</button>
+        <button id="submitBtn" onclick="submitExam()" style="display:none;">Submit Exam</button>
+    </div>
+    <script src="questions.js"></script>
+    <script src="exam.js"></script>
 </body>
 </html>
