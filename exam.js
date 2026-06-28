@@ -1,115 +1,69 @@
 let currentQuestion = 0;
-let answers = new Array(questions.length).fill(null);
-let timeLeft = 50 * 60; // 50 minutes
+let score = 0;
+let selectedOption = null;
 
-document.getElementById("candidate").textContent =
-localStorage.getItem("candidateName") || "Unknown Candidate";
-
-loadQuestion();
-startTimer();
+// Display candidate name
+window.onload = function() {
+    const name = localStorage.getItem("candidateName");
+    if (!name) {
+        alert("Please login first!");
+        window.location.href = "index.html";
+        return;
+    }
+    document.getElementById("candidateNameDisplay").textContent = "Welcome, " + name + "!";
+    loadQuestion();
+};
 
 function loadQuestion() {
-
-    let q = questions[currentQuestion];
-
-    document.getElementById("question").innerHTML =
-    <strong>Question ${currentQuestion + 1} of ${questions.length}</strong><br><br>${q.question};
-
-    let optionsHTML = "";
-
-    for (let i = 0; i < q.options.length; i++) {
-
-        optionsHTML += `
-        <label style="display:block; margin:10px 0;">
-            <input type="radio"
-                   name="option"
-                   value="${i}"
-                   ${answers[currentQuestion] === i ? "checked" : ""}
-                   onclick="saveAnswer(${i})">
-            ${q.options[i]}
-        </label>
-        `;
+    if (currentQuestion >= questions.length) {
+        showResult();
+        return;
     }
 
-    document.getElementById("options").innerHTML = optionsHTML;
+    const q = questions[currentQuestion];
+    document.getElementById("questionText").textContent = (currentQuestion + 1) + ". " + q.question;
+    
+    const optionsContainer = document.getElementById("optionsContainer");
+    optionsContainer.innerHTML = "";
+    
+    q.options.forEach((option, index) => {
+        const button = document.createElement("button");
+        button.textContent = option;
+        button.onclick = function() { selectOption(index); };
+        button.id = "option" + index;
+        optionsContainer.appendChild(button);
+        optionsContainer.appendChild(document.createElement("br"));
+    });
+    
+    selectedOption = null;
 }
 
-function saveAnswer(choice) {
-    answers[currentQuestion] = choice;
+function selectOption(index) {
+    selectedOption = index;
+    // Highlight selected option
+    const buttons = document.querySelectorAll("#optionsContainer button");
+    buttons.forEach((btn, i) => {
+        btn.style.backgroundColor = i === index ? "#4CAF50" : "";
+    });
 }
 
 function nextQuestion() {
-
-    if (currentQuestion < questions.length - 1) {
-
-        currentQuestion++;
-        loadQuestion();
-
-    } else {
-
-        submitExam();
-
+    if (selectedOption === null) {
+        alert("Please select an answer!");
+        return;
     }
-
+    
+    const q = questions[currentQuestion];
+    if (selectedOption === q.answer) {
+        score++;
+    }
+    
+    currentQuestion++;
+    loadQuestion();
 }
 
-function previousQuestion() {
-
-    if (currentQuestion > 0) {
-
-        currentQuestion--;
-        loadQuestion();
-
-    }
-
-}
-
-function startTimer() {
-
-    setInterval(function () {
-
-        let minutes = Math.floor(timeLeft / 60);
-        let seconds = timeLeft % 60;
-
-        document.getElementById("timer").textContent =
-            minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
-
-        timeLeft--;
-
-        if (timeLeft < 0) {
-
-            submitExam();
-
-        }
-
-    }, 1000);
-
-}
-
-function submitExam() {
-
-    let score = 0;
-
-    for (let i = 0; i < questions.length; i++) {
-
-        if (answers[i] === questions[i].answer) {
-
-            score++;
-
-        }
-
-    }
-
-    alert(
-        "Exam Completed!\n\n" +
-        "Candidate: " +
-        localStorage.getItem("candidateName") +
-        "\n\nScore: " +
-        score +
-        " / " +
-        questions.length
-    );
-
-    window.location.href = "index.html";
-
+function showResult() {
+    document.getElementById("questionContainer").style.display = "none";
+    document.getElementById("resultContainer").style.display = "block";
+    document.getElementById("scoreDisplay").textContent = score + " out of " + questions.length;
 }
