@@ -1,113 +1,52 @@
 const questions = [
-
-{
-    question: "Which position is best for a patient experiencing difficulty in breathing?",
-    options: [
-        "Supine Position",
-        "Fowler's Position",
-        "Trendelenburg Position",
-        "Prone Position"
-    ],
-    answer: 1
-},
-
-{
-    question: "The normal adult pulse rate is:",
-    options: [
-        "40–60 bpm",
-        "60–100 bpm",
-        "100–140 bpm",
-        "120–160 bpm"
-    ],
-    answer: 1
-},
-
-{
-    question: "Which vitamin is responsible for blood clotting?",
-    options: [
-        "Vitamin A",
-        "Vitamin C",
-        "Vitamin D",
-        "Vitamin K"
-    ],
-    answer: 3
-},
-
-{
-    question: "The largest organ in the human body is:",
-    options: [
-        "Liver",
-        "Skin",
-        "Brain",
-        "Lungs"
-    ],
-    answer: 1
-},
-
-{
-    question: "Normal body temperature is:",
-    options: [
-        "35°C",
-        "36.5°C–37.5°C",
-        "38°C",
-        "39°C"
-    ],
-    answer: 1
-},
-
-{
-    question: "Which chamber of the heart pumps oxygenated blood to the body?",
-    options: [
-        "Right Atrium",
-        "Left Atrium",
-        "Right Ventricle",
-        "Left Ventricle"
-    ],
-    answer: 3
-},
-
-{
-    question: "The abbreviation BP stands for:",
-    options: [
-        "Body Pressure",
-        "Blood Pressure",
-        "Brain Pressure",
-        "Body Pulse"
-    ],
-    answer: 1
-},
-
-{
-    question: "Which organ filters blood to produce urine?",
-    options: [
-        "Heart",
-        "Liver",
-        "Kidney",
-        "Lungs"
-    ],
-    answer: 2
-},
-
-{
-    question: "How many lungs does a healthy adult normally have?",
-    options: [
-        "One",
-        "Two",
-        "Three",
-        "Four"
-    ],
-    answer: 1
-},
-
-{
-    question: "The functional unit of the kidney is:",
-    options: [
-        "Neuron",
-        "Nephron",
-        "Alveolus",
-        "Osteon"
-    ],
-    answer: 1
-}
-
+    {
+        question: "What does HTML stand for?",
+        options: [
+            "Hyper Text Markup Language",
+            "High Tech Modern Language",
+            "Hyper Transfer Markup Language",
+            "None of the above"
+        ],
+        correct: 0
+    },
+    {
+        question: "What is the capital of Nigeria?",
+        options: [
+            "Lagos",
+            "Abuja",
+            "Kano",
+            "Port Harcourt"
+        ],
+        correct: 1
+    },
+    {
+        question: "Which of the following is a programming language?",
+        options: [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "All of the above"
+        ],
+        correct: 2
+    },
+    {
+        question: "What does CSS stand for?",
+        options: [
+            "Computer Style Sheets",
+            "Cascading Style Sheets",
+            "Creative Style Sheets",
+            "None of the above"
+        ],
+        correct: 1
+    },
+    {
+        question: "Which company developed JavaScript?",
+        options: [
+            "Microsoft",
+            "Netscape",
+            "Google",
+            "Apple"
+        ],
+        correct: 1
+    }
 ];
